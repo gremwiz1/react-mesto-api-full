@@ -24,6 +24,13 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
 });
+const allowedCors = [
+  "https://gremwiz.backend.nomoredomains.club/",
+  "http://gremwiz.backend.nomoredomains.club/",
+  "localhost:3000",
+  "https://praktikum.tk",
+  "http://praktikum.tk",
+];
 const app = express();
 app.use(helmet());
 app.use(express.json());
@@ -34,6 +41,28 @@ mongoose.connect("mongodb://localhost:27017/mestodb", {
 });
 app.use(limiter);
 app.use(requestLogger); // подключаем логгер запросов
+app.get("/crash-test", () => {
+  setTimeout(() => {
+    throw new Error("Сервер сейчас упадёт");
+  }, 0);
+});
+app.use((req, res, next) => {
+  const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
+  // проверяем, что источник запроса есть среди разрешённых
+  const { methodHttp } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
+  const requestHeaders = req.headers["access-control-request-headers"];
+  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+  if (allowedCors.includes(origin)) {
+    // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+  if (methodHttp === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", DEFAULT_ALLOWED_METHODS);
+    res.header("Access-Control-Allow-Headers", requestHeaders);
+    return res.end();
+  }
+  return next();
+});
 app.post("/signin", celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
