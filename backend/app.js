@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const { celebrate, errors, Joi } = require("celebrate");
 const { isURL } = require("validator");
 const rateLimit = require("express-rate-limit");
+const { requestLogger, errorLogger } = require("./middlewares/logger");
 const usersRouter = require("./routes/users");
 const cardsRouter = require("./routes/cards");
 const errorsRouter = require("./routes/errors");
@@ -32,6 +33,7 @@ mongoose.connect("mongodb://localhost:27017/mestodb", {
   useFindAndModify: false,
 });
 app.use(limiter);
+app.use(requestLogger); // подключаем логгер запросов
 app.post("/signin", celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
@@ -51,6 +53,7 @@ app.use(auth);
 app.use("/", usersRouter);
 app.use("/", cardsRouter);
 app.use("*", errorsRouter);
+app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
 app.use(errorsMiddlewares);
 app.listen(PORT, () => {
