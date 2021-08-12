@@ -1,13 +1,12 @@
 class Api {
-  constructor(baseUrl, authorization) {
+  constructor(baseUrl) {
     this._baseUrl = baseUrl;
-    this._authorization = authorization;
   }
 
   getInitialCards() {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
     })
@@ -22,14 +21,14 @@ class Api {
 
   }
   addItem(item) {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       body: JSON.stringify({
         name: item.name,
         link: item.link
       }),
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
 
@@ -43,9 +42,9 @@ class Api {
     });
   }
   getUserProfile() {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
     })
@@ -60,10 +59,10 @@ class Api {
 
   }
   editUserProfile(item) {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -82,10 +81,10 @@ class Api {
 
   }
   putLikeClick(card) {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/cards/likes/${card}`, {
+    return fetch(`${this._baseUrl}/cards/likes/${card}`, {
       method: 'PUT',
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
     }).then(res => {
@@ -98,10 +97,10 @@ class Api {
     });
   }
   deleteLikeClick(card) {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/cards/likes/${card}`, {
+    return fetch(`${this._baseUrl}/cards/likes/${card}`, {
       method: 'DELETE',
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
     }).then(res => {
@@ -114,10 +113,10 @@ class Api {
     });
   }
   deleteCard(card) {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/cards/${card}`, {
+    return fetch(`${this._baseUrl}/cards/${card}`, {
       method: 'DELETE',
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       }
     }).then(res => {
@@ -131,10 +130,10 @@ class Api {
   }
   changeAvatarImage(item) {
 
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._baseUrl}/users/me/avatar`, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: this._authorization,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -154,5 +153,5 @@ class Api {
 
   // другие методы работы с API
 }
-const api = new Api('cohort-23', '71d78780-0adb-4990-8076-8dfa433548e7');
+const api = new Api("https://gremwiz.backend.nomoredomains.club");
 export default api;
