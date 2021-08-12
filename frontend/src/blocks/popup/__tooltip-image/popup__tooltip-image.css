@@ -1,0 +1,7 @@
+.popup__tooltip-image {
+    object-fit: cover;
+    object-position: center;
+    width: 120px;
+    height: 120px;
+    margin: 60px auto 40px;
+}

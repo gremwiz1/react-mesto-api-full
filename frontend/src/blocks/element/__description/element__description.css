@@ -1,0 +1,11 @@
+.element__description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding-left: 21px;
+    padding-right: 15px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    border-radius: 0 0 10px 10px;
+}

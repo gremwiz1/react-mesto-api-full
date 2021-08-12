@@ -1,0 +1,17 @@
+.profile__change-avatar {
+    height: 120px;
+    width: 120px;
+    background-image: url(../../../images/button-change-avatar.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-color: #000000;
+    margin-right: 30px;
+    transition: 1s;
+}
+@media screen and (max-width: 1050px) {
+    .profile__change-avatar {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

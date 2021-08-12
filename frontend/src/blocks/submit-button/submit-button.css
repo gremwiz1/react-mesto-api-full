@@ -1,0 +1,41 @@
+.submit-button {
+    background: #000000;
+    border-radius: 2px;
+    min-height: 50px;
+    margin-top: 48px;
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-bottom: 37px;
+    transition: 0.6s;
+    border: none;
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    font-style: normal;
+    font-weight: normal;
+    width: 358px;
+}
+@media screen and (max-width: 560px) {
+    .submit-button {
+        min-height: 46px;
+        margin-top: 45px;
+        margin-left: 22px;
+        margin-right: 22px;
+        margin-bottom: 25px;
+        font-size: 14px;
+        line-height: 17px;
+        width: 238px;
+    }
+}
+.submit-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.submit-button:disabled {
+    border: 1px solid #000000;
+    opacity: 0.2;
+    background: #e5e5e5;
+    color: #000000;
+}

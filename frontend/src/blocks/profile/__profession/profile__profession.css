@@ -1,0 +1,23 @@
+.profile__profession {
+    margin-bottom: 0;
+    text-align: left;
+    grid-area: profession;
+    margin-top: 16px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 21.78px;
+    color: #ffffff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+@media screen and (max-width: 1050px) {
+    .profile__profession {
+        text-align: center;
+        margin-top: 14px;
+        font-size: 14px;
+        line-height: 16.94px;
+    }
+}

@@ -1,0 +1,16 @@
+.header__sign {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.8s;
+}
+.header__sign:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}

@@ -1,0 +1,21 @@
+.form__button {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #000000;
+    width: 358px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 2px;
+    margin-top: 186px;
+    margin-bottom: 15px;
+    transition: 0.8s;
+}
+.form__button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}

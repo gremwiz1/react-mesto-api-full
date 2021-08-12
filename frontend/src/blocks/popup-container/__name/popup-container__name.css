@@ -1,0 +1,27 @@
+.popup-container__name {
+    color: #000000;
+    font-family: 'Inter',Arial, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: normal;
+    font-style: normal;
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-top: 54px;
+    border: none;
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    width: 358px;
+    box-sizing: border-box;
+}
+.popup-container__name:nth-child(2n) {
+    margin-top: 30px;
+}
+@media screen and (max-width: 560px) {
+    .popup-container__name {
+        margin-left: 22px;
+        margin-right: 22px;
+        margin-top: 75px;
+        width: 238px;
+    }
+}

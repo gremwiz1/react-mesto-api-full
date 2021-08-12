@@ -1,0 +1,20 @@
+.popup-container__error {
+    font-family: 'Iner', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ff0000;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 0;
+    margin-left: 36px;
+    margin-right: 36px;
+    width: 358px;
+    display: block;
+}
+@media screen and (max-width: 560px) {
+    .popup-container__error {
+        margin-left: 22px;
+        margin-right: 22px;
+        width: 238px;
+    }
+}
