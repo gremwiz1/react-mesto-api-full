@@ -81,7 +81,7 @@ class Api {
 
   }
   putLikeClick(card) {
-    return fetch(`${this._baseUrl}/cards/likes/${card}`, {
+    return fetch(`${this._baseUrl}/cards/${card}/likes`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -97,7 +97,7 @@ class Api {
     });
   }
   deleteLikeClick(card) {
-    return fetch(`${this._baseUrl}/cards/likes/${card}`, {
+    return fetch(`${this._baseUrl}/cards/${card}/likes`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${localStorage.getItem('jwt')}`,

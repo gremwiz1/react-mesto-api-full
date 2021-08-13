@@ -43,7 +43,7 @@ module.exports.getUsers = (req, res, next) => {
     .catch(next);
 };
 module.exports.getUser = (req, res, next) => {
-  User.findById(req.params.userId)
+  User.findById(req.user._id)
     .orFail(new Error("NotValidIdUser"))
     .then((user) => {
       res.status(200).send(user);
@@ -60,7 +60,8 @@ module.exports.getUser = (req, res, next) => {
 };
 module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
-  User.findOneAndUpdate(req.params.userId, { name, about }, { new: true, runValidators: true })
+  User.findByIdAndUpdate(req.user._id, { name, about },
+    { new: true, runValidators: true, upsert: true })
     .orFail(new Error("NotValidIdUser"))
     .then((user) => {
       res.status(200).send(user);
@@ -80,7 +81,8 @@ module.exports.updateAvatar = (req, res, next) => {
   if (!avatar) {
     throw new BadRequestError("Поле аватар не заполнено");
   } else {
-    User.findByIdAndUpdate(req.params.userId, { avatar }, { new: true, runValidators: true })
+    User.findByIdAndUpdate(req.user._id, { avatar },
+      { new: true, runValidators: true, upsert: true })
       .orFail(new Error("NotValidIdUser"))
       .then((user) => {
         res.status(200).send(user);
