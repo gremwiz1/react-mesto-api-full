@@ -28,17 +28,26 @@ function App() {
   const [token, setToken] = React.useState("");
   const [infoTooltipMessage, setInfoTooltipMessage] = React.useState("");
   const history = useHistory();
+
   React.useEffect(() => {
-    Promise.all([
-      api.getUserProfile(),
+    if (loggedIn === true) {
+      api.getUserProfile()
+        .then(userData => {
+          setCurrentUser(userData)
+        })
+        .catch(err => console.log(err))
+    }
+  }, [loggedIn]);
+
+  React.useEffect(() => {
+    if (loggedIn === true) {
       api.getInitialCards()
-    ]).then(([result, cards]) => {
-      setCurrentUser(result);
-      setCards(cards);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }, []);
+        .then(cardsData => {
+          setCards(cardsData)
+        })
+        .catch(err => console.log(err))
+    }
+  }, [loggedIn]);
 
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
