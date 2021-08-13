@@ -1,1 +1,1 @@
-export const BASE_URL = "https://gremwiz.backend.nomoredomains.club";
+export const BASE_URL = "http://gremwiz.backend.nomoredomains.club/api";

@@ -153,5 +153,5 @@ class Api {
 
   // другие методы работы с API
 }
-const api = new Api("https://gremwiz.backend.nomoredomains.club");
+const api = new Api("http://gremwiz.backend.nomoredomains.club/api");
 export default api;
