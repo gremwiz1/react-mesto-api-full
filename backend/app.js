@@ -11,6 +11,7 @@ const errorsRouter = require("./routes/errors");
 const errorsMiddlewares = require("./middlewares/errors");
 const { login, createUser } = require("./controllers/users");
 const auth = require("./middlewares/auth");
+require("dotenv").config();
 
 const { PORT = 3000 } = process.env;
 const method = (value) => {
