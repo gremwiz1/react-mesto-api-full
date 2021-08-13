@@ -6,7 +6,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
     })
@@ -28,7 +28,7 @@ class Api {
         link: item.link
       }),
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
 
@@ -44,7 +44,7 @@ class Api {
   getUserProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
     })
@@ -62,7 +62,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -84,7 +84,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/likes/${card}`, {
       method: 'PUT',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
     }).then(res => {
@@ -100,7 +100,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/likes/${card}`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
     }).then(res => {
@@ -116,7 +116,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${card}`, {
       method: 'DELETE',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       }
     }).then(res => {
@@ -133,7 +133,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
