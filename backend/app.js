@@ -63,13 +63,13 @@ app.use((req, res, next) => {
   }
   return next();
 });
-app.post("/signin", celebrate({
+app.post("/api/signin", celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }),
 }), login);
-app.post("/signup", celebrate({
+app.post("/api/signup", celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
@@ -79,8 +79,8 @@ app.post("/signup", celebrate({
   }),
 }), createUser);
 app.use(auth);
-app.use("/", usersRouter);
-app.use("/", cardsRouter);
+app.use("/api", usersRouter);
+app.use("/api", cardsRouter);
 app.use("*", errorsRouter);
 app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
